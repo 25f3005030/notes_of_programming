@@ -338,3 +338,59 @@ __comm -12__: The comm command compares two files line by line.
 
 **tr**: *A character-translation utility. It operates by mapping individual characters from one set to another rather than performing* *string-level replacements.*
 
+*wc -l < twingle: Redirects the file into wc so that only the number is printed, without the filename.*
+
+*ls -p: Lists all items in the directory. The -p flag appends a forward slash (/) to the end of names that are directories, making them *easy to identify.*
+*grep /: Filters the list to only include lines containing a / (which are the directories).* 
+
+__tee -a log__ : default, tee overwrites a file. The -a flag tells tee to append the output to the end of the file
+
+## week -> 4 
+
+__grep 'Raman' names.txt__  *serch for word Raman in names.txt* 
+__cat names.txt | grep 'S.a'__ *search for S then one character then a* 
+__cat names.txt | grep '.am'__ *a character then am*
+__cat names.txt | grep 'am$'__ *that $ means am at last*
+__cat names.txt | grep '\.'__ *search for dot as \ is escape character*
+__cat names.txt | grep '^M'__ *search for capital M in starting bcoz of ^*
+__cat names.txt | grep -i '^e'__ *search for e in starting , -i for case insensitive*  
+
+__sed -i 's/ *$//' names.txt__ _-i: Edits the file in place._
+_s/ *$//: Replaces any trailing spaces at the end of the line with nothing._
+
+__cat -e names.txt__ to see trailing space between end of the line and $ 
+__cat names.txt | grep 'am\b'__ am at the end of the word 
+__cat names.txt | grep 'M[ME]'__ M IN starting than either M or E  
+__cat names.txt | grep 'S.*[mn]'__ _S in starting then anything then either m or n in last, it does not matter wheather ther is space in between or not_
+
+__cat names.txt | grep '\bS.*[mn]'__ /b giving one word boundry and then same as upper (no space ) 
+__cat names.txt | grep '[aeiou][aeiou]'__ two times vowels continious 
+__cat names.txt | grep 'B90[1-5]'__ for all B901... B905
+__cat names.txt | grep 'B90[^5-7]'__ GIVING NEGATION(^) 
+
+__cat names.txt | grep 'M\{2\}'__ M should repeat two times 
+__cat names.txt | grep 'M\{1,2\}'__ either one or two times 
+__cat names.txt | grep  '\(ma\)'__ ma should be matching anywhere 
+__cat names.txt | grep  '\(ma\).*/1'__ should match ma then something then again ma --> _Umair Ahmad_ 
+
+__cat names.txt | grep  '\(a.\)\{2\}__ first a then a single character, and it is two times in continus eg: Raman,Anumpama Sridhar,Vel Sankaran
+
+__cat names.txt | grep  'M+'__ it has one m or more than one m 
+__cat names.txt | egrep  'M*a'__ word that has ma or a only ( m is optional to be there)
+
+__cat names.txt | egrep  'ma+'__ either one ma or two ma 
+__cat names.txt | egrep  'Anu|Raman'__ either Anu or Raman 
+
+## pattern making part-2 
+
+__cat chartypes.txt | grep '[[:alpha:]]'__ lines where there are albhabet 
+__cat chartypes.txt | grep '[[:cntrl:]]'__ where there is control like tab or ctrl command 
+__cat chartypes.txt | grep -v '[[:cntrl:]]'__ -v means negation here 
+see pdf for that , [[:punct:]],[[:lower:]],[[:upper:]],
+[[:print:]] printable character 
+,[[:blank:]] *only the lines in your file that contain at least one horizontal space or a tab character.*
+,[[:graph:]] match any nono space character 
+
+__cat chartypes.txt | grep '^$'__  give empty lines that are in file 
+
+
