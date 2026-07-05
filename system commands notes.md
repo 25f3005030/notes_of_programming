@@ -393,4 +393,44 @@ see pdf for that , [[:punct:]],[[:lower:]],[[:upper:]],
 
 __cat chartypes.txt | grep '^$'__  give empty lines that are in file 
 
+__egrep '\b[[:digit:]]{6}\b' patterns.txt__ /b is word boundry , digits that is 6 in size 
+__egrep '\b[[:alpha:]]{2}[[:digit:]]{2}[[:alpha:]][[:digit:]]{3}\b' patterns.txt__ *word boundry both side, 2 alpha 2 digit 1 alpha 3 digit 
+
+__cut -c 5-8 fields.txt__ cutting character 5 to 8 
+__cat fields.txt | cut -d " " -f 2__ taking delimiter as space (-d) also 2 is second thing afer space .
+ __cat fields.txt | cut -d ";" -f 2__ 
+
+ __cat fields.txt | cut -d ";" -f 2 | cut -d "," -f 1__ *first cutting by semicolon then by comma* 
+
+__cat fields.txt | cut -d ";" -f 2 | cut -d "," -f 1 | head -n 2 | tail -n 1__ *then starting 3 line then bottom lines from those three lines* 
+
+## find command in week 4 last lecture 
+
+__find .__ find all files and directorires 
+__find testdir1__ find directories and its files 
+
+__find . -type d__ find all directories 
+__find . -type f__ find all the files 
+
+__find . -type f -name "tfile1"__ finding location of this file
+__find . -type f -iname "tf*"__ * is wild card 
+
+__find . -type f -mmin -10__ file edited in less than 10 minute , __+10__ means edited in more than 10 minute 
+__find . -type f -mmin +1 -mmin -10__ using both 
+
+__find . -size +5k__ accoring to size 
+__find . -empty__ all empty files 
+
+__find . -perm 777__ gives me all files that has permissin as 777 
+
+__find testdir1 -exec chown mukul_pandit:www-data {} +__ *in directory tesdir1 , all files , -exec is execution, chown is changing ownership from mukul_pandit to www-data . {} is just a place holder, + or \;
+*file ownership of group has been changed use sudo*
+
+__find testdir1 -perm 775__ finding directories and files that has this permission 
+
+__sudo find testdir1 -type d -exec chmod 664 {} +__ changing permission for directories *use f* for fies 
+
+__find . -type f -name "*.jpg" -maxdepth 1__ jpg files with depth as one ie in current directories 
+
+__find . -type f -name "*.jpg" -maxdepth 1 -exec rm {} +__
 
