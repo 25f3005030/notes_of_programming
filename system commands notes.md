@@ -186,251 +186,262 @@ __3,5s/PREFIX/prefix/__ from third to fifth i am substituting the PREFIX to pref
 ## vi editor 
 _just see the pdf bro it has all the commands_ 
 __dmseg > dmseg.txt__ to copy this file , *this is only in home/mukul_pandit* 
-__100dd__ will delete 100 lines
-__....:..__ it means that there are four character than colon two character so in this way like __%s/...:../hello/g__ g for global in that file .
+__100dd__ will delete 100 lines 
+__....:..__ it means that there are four character than colon two character so in this way like __%s/...:../hello/g__ g for global in   that file . 
 
-## emacs editor 
-__emacs -nw filename__ it force it to open in terminal 
+## emacs editor   
+__emacs -nw filename__ it force it to open in terminal  
 
-__ifconfig__: Your initial attempt to view network interfaces (which triggered the discussion on modern alternatives).
-__ip addr__: The modern command used to successfully list your network interfaces and IP addresses.
-__nslookup www.iitm.ac.in__: Your first attempt at a DNS lookup.
-__dig google.com__: Suggested for practice to see a successful forward DNS query.
-__traceroute www.iitm.ac.in__: Suggested for visualizing network paths.
+__ifconfig__: Your initial attempt to view network interfaces (which triggered the discussion on modern alternatives).  
+__ip addr__: The modern command used to successfully list your network interfaces and IP addresses. 
+__nslookup www.iitm.ac.in__: Your first attempt at a DNS lookup.  
+__dig google.com__: Suggested for practice to see a successful forward DNS query. 
+__traceroute www.iitm.ac.in__: Suggested for visualizing network paths. 
 
 
-## combining commands and files 
-__ls ; date ; wc -l /etc/profile ;__ execute all commands one by one 
-__(ls ; date ; wc -l /etc/profile ;)__ execute in a subshelll 
-__echo $BASH_SUBSHELL__ to see the subshell no.
+## combining commands and files   
+__ls ; date ; wc -l /etc/profile ;__ execute all commands one by one  
+__(ls ; date ; wc -l /etc/profile ;)__ execute in a subshelll   
+__echo $BASH_SUBSHELL__ to see the subshell no. 
 
-__(echo $BASH_SUBSHELL)__ 
-__1__
-to see what subshell is there (when you use bracket it executes in a subshell)
+__(echo $BASH_SUBSHELL)__   
+__1__ 
+to see what subshell is there (when you use bracket it executes in a subshell)  
 
-__ls /blah && date__ it means that second command only works if first commands works (like and )
-__ls /blah || date__ it means second is only executed if first fails 
+__ls /blah && date__ it means that second command only works if first commands works (like and )  
+__ls /blah || date__ it means second is only executed if first fails  
 
-______________________________  
-__ls -1 /usr/bin__ it will give one command per line of the output 
-__ls -1 /usr/bin > file1__ redirect the content of the file to file1
-__ls -1 /blah > file1__ give error and overwrite the file (now content is 0)
+______________________________    
+__ls -1 /usr/bin__ it will give one command per line of the output  
+__ls -1 /usr/bin > file1__ redirect the content of the file to file1  
+__ls -1 /blah > file1__ give error and overwrite the file (now content is 0)  
 
-__hwinfo__ give information about hardware __hwinfo > hwinfo.txt__ redirect it to file 
+__hwinfo__ give information about hardware __hwinfo > hwinfo.txt__ redirect it to file  
 
-__cat > file1__ if you have not specify any file you can type from keyboard in this command 
-come out using ctrl + D 
+__cat > file1__ if you have not specify any file you can type from keyboard in this command   
+come out using ctrl + D   
 
-__cat__ it will just type and show the word on screen line by line, ctl +d for come out 
+__cat__ it will just type and show the word on screen line by line, ctl +d for come out   
 
-__command >> file1__ it will append the file and if not exist it will be created 
+__command >> file1__ it will append the file and if not exist it will be created  
 
-__ls $HOME /blah 2> error.txt__ first it will redirect the eroor to eroor.txt file , it will not show error that occured on screen bcoz it redirect it into error.txt file 
+__ls $HOME /blah 2> error.txt__ first it will redirect the eroor to eroor.txt file , it will not show error that occured on screen bcoz it redirect it into error.txt file  
 
-## REDIRECTIONS 
+## REDIRECTIONS   
 
-__cat < error.txt__ (redirecting the input from keyboard to use file content )
+__cat < error.txt__ (redirecting the input from keyboard to use file content )  
 -
-__wc < error.txt__ it means content has to be read form command line 
-__ls $HOME /blah > file1 2>&1__ redirect both output and error to file1 
+__wc < error.txt__ it means content has to be read form command line   
+__ls $HOME /blah > file1 2>&1__ redirect both output and error to file1   
 
-__ls /usr/bin | wc -l__ redirecting output of one command to input of second command , but error are only directed to screen 
+__ls /usr/bin | wc -l__ redirecting output of one command to input of second command , but error are only directed to screen  
 
-__ls /usr/bin | wc -l > file1__ (upper command and )redirect output of second command to file1 
+__ls /usr/bin | wc -l > file1__ (upper command and )redirect output of second command to file1  
 
-__/dev/null__ black hole to direct things (dev is very sensitive do not use anythings else) 
+__/dev/null__ black hole to direct things (dev is very sensitive do not use anythings else)   
 
-__tee - Copy standard input to each FILE, and also to standard output__ 
+__tee - Copy standard input to each FILE, and also to standard output__   
 
-__lsb_release -a__  for operating system of linux 
+__lsb_release -a__  for operating system of linux   
 
-__apt cache search package fortune__ get to know where fortune keyword is (so many fortune type things )
+__apt cache search package fortune__ get to know where fortune keyword is (so many fortune type things )  
 
-__apt-cache pkgnames__ installed package names 
+__apt-cache pkgnames__ installed package names  
 
-__apt-cache pkgnames nm__ package starting with nm 
+__apt-cache pkgnames nm__ package starting with nm  
 
-__apt-cache show fortunes__ show information about things 
+__apt-cache show fortunes__ show information about things   
 
-__md5sum file1.txt__
-it gives the stritg that is different for every file (471c7f53bae1ec7c12553dd2424604f2  file1.txt)
+__md5sum file1.txt__  
+it gives the stritg that is different for every file (471c7f53bae1ec7c12553dd2424604f2  file1.txt)  
 
-__sha1um file1.txt__
+__sha1um file1.txt__  
 
-__sha256sum file2.txt__ 
+__sha256sum file2.txt__   
 
-## software managment part 2 
+## software managment part 2  
 
-__sudo cat /etc/sudoers__ sudo give us permission to get root privilage if we are added on it 
+__sudo cat /etc/sudoers__ sudo give us permission to get root privilage if we are added on it   
 
-__/etc/apt__ it has all installed files from website that you have installed 
+__/etc/apt__ it has all installed files from website that you have installed  
 
-__cat sources.list__ you will get the another adress after that in new one __/etc/apt/sources.list.d/ubuntu.sources__ 
+__cat sources.list__ you will get the another adress after that in new one __/etc/apt/sources.list.d/ubuntu.sources__   
 
-__sudo apt-get updates__ to get the updates 
-__sudo apt-get upgrade__ to upgrade the packages that you have installed 
+__sudo apt-get updates__ to get the updates   
+__sudo apt-get upgrade__ to upgrade the packages that you have installed  
 
-__sudo apt autoremove__  to remove the unesscdery package after upgrading bcoz they were just there to supprt some download and now we have the newer version of that 
+__sudo apt autoremove__  to remove the unesscdery package after upgrading bcoz they were just there to supprt some download and now we  have the newer version of that   
 
-__sudo apt-get remove fortunes__ it remove the package __sudo apt-get remove fortune-mod__ it remove the cookies  
+__sudo apt-get remove fortunes__ it remove the package __sudo apt-get remove fortune-mod__ it remove the cookies    
 
-__sudo apt-get install fortune-mod__ to install the fortune package
+__sudo apt-get install fortune-mod__ to install the fortune package 
 
-__sudo apt-get reinstall fortune-mod__ to reinstall the package ,to refresh old one 
+__sudo apt-get reinstall fortune-mod__ to reinstall the package ,to refresh old one   
 
-__cd /var/lib/dpkg/__ -> __less status__ to see status of packages 
+__cd /var/lib/dpkg/__ -> __less status__ to see status of packages  
 
-__mukul_pandit@DESKTOP-O2A5EAO:/var/lib/dpkg/info$ more wget.md5sums__ 
-*mukul_pandit@DESKTOP-O2A5EAO:/var/lib/dpkg/info$ md5sum /usr/bin/wget* 
-_c57c56d1d70b45a9327bbb679c8bd43  /usr/bin/wget_
+__mukul_pandit@DESKTOP-O2A5EAO:/var/lib/dpkg/info$ more wget.md5sums__  
+*mukul_pandit@DESKTOP-O2A5EAO:/var/lib/dpkg/info$ md5sum /usr/bin/wget*   
+_c57c56d1d70b45a9327bbb679c8bd43  /usr/bin/wget_  
 
-to see if the file has been tempered or not 
-__apt search fortune__ to search commands related to it 
-## use dpkg
+to see if the file has been tempered or not   
+__apt search fortune__ to search commands related to it   
+## use dpkg 
 
-*gives us information about a package* 
+*gives us information about a package*  
 
-__dpkg -l nmap__ gives informatin about the architecture (list)
-__dpkg -L nmap__ give us the various files that are installed with nmap package (list files) 
-__apt-cache show (package_name)__ == __dpkg -s nmap__  gives utilites about that package (status)
+__dpkg -l nmap__ gives informatin about the architecture (list) 
+__dpkg -L nmap__ give us the various files that are installed with nmap package (list files)  
+__apt-cache show (package_name)__ == __dpkg -s nmap__  gives utilites about that package (status) 
 
-*dpkg -S /usr/bin/perl* (search)
-*perl-base: /usr/bin/perl*  shows from where this particular package has come (location ) 
+*dpkg -S /usr/bin/perl* (search)  
+*perl-base: /usr/bin/perl*  shows from where this particular package has come (location )   
 
-__dpkg -S /usr/bin/perl__ search for which installed package owns a specific file. (search)
+__dpkg -S /usr/bin/perl__ search for which installed package owns a specific file. (search) 
 
-**dpkg-query -W -f='${Section} ${binary:package}\n'** it will give me a list of all the section and within each section what are the binary package  
+**dpkg-query -W -f='${Section} ${binary:package}\n'** it will give me a list of all the section and within each section what are the   binary package   
 
-__dpkg-query -W -f='${Section} ${binary:package}\n' | grep shells__ it filter the line that only have the 
+__dpkg-query -W -f='${Section} ${binary:package}\n' | grep shells__ it filter the line that only have the   
 
-## linux operating system 
+## linux operating system   
 
-**sleep 3** making it sleep for 3 second 
+**sleep 3** making it sleep for 3 second  
 
-__coproc sleep 10__ getting 10 second to type anything in sleep and then session gets over 
-__ps --forest__ to see the p ID of the bash shell and now 
-__kill -9 754__ that 954 is pid , that is used to kill the process 
+__coproc sleep 10__ getting 10 second to type anything in sleep and then session gets over  
+__ps --forest__ to see the p ID of the bash shell and now   
+__kill -9 754__ that 954 is pid , that is used to kill the process  
 
-__sleep 30 &__ , _&_ to put the process in background , type _fg_ to put it in foregroung and then use ctrl + c to kill it 
+__sleep 30 &__ , _&_ to put the process in background , type _fg_ to put it in foregroung and then use ctrl + c to kill it  
 
-__jobs__ to see the backgroung process 
-__top__ tell about the process running in cpu ,_q_ or _ctrl+c_ for kill, _ctrl+z_ for suspending the task then _fg_ for getting in foregroung and then kill it 
+__jobs__ to see the backgroung process  
+__top__ tell about the process running in cpu ,_q_ or _ctrl+c_ for kill, _ctrl+z_ for suspending the task then _fg_ for getting in  foregroung and then kill it   
 
-__bash -c "echo \$-"__ initiating a child shell 
+__bash -c "echo \$-"__ initiating a child shell   
 
-__bash -c "echo \$$; echo \$-; ps --forest"__ first is giving the pid ,second is shell that lacks interatcive thing , and third is forest 
+__bash -c "echo \$$; echo \$-; ps --forest"__ first is giving the pid ,second is shell that lacks interatcive thing , and third is forest  
 
-__history__ 
-__echo{a..z}__ print all alphabet a to z 
-__echo*__ to list all the files in pwd
+__history__   
+__echo{a..z}__ print all alphabet a to z  
+__echo*__ to list all the files in pwd  
 
-## error code wala method 
-__echo $?__ will give zero if previous code ran without error , but give between 1 to 255 if the prev. code had some error , the number depend on type of error 
+## error code wala method   
+__echo $?__ will give zero if previous code ran without error , but give between 1 to 255 if the prev. code had some error , the number  depend on type of error  
 
-__ps -e__ list the all process that is running in the background 
+__ps -e__ list the all process that is running in the background  
 
-_he instructor is demonstrating that Linux exit codes are limited to a range of 0–255, so any value higher than that is treated as a modulo 256 operation._
+_he instructor is demonstrating that Linux exit codes are limited to a range of 0–255, so any value higher than that is treated as a modulo 256 operation._ 
 
-__comm -12__: The comm command compares two files line by line.
-*-1 suppresses the output of lines unique to the first file.*
-*-2 suppresses the output of lines unique to the second file.*
-*By using -12, only the third column (lines common to both files) is displayed.* 
+__comm -12__: The comm command compares two files line by line. 
+*-1 suppresses the output of lines unique to the first file.* 
+*-2 suppresses the output of lines unique to the second file.*  
+*By using -12, only the third column (lines common to both files) is displayed.*  
 
-**tr**: *A character-translation utility. It operates by mapping individual characters from one set to another rather than performing* *string-level replacements.*
+**tr**: *A character-translation utility. It operates by mapping individual characters from one set to another rather than performing* *string-level replacements.* 
 
-*wc -l < twingle: Redirects the file into wc so that only the number is printed, without the filename.*
+*wc -l < twingle: Redirects the file into wc so that only the number is printed, without the filename.* 
 
-*ls -p: Lists all items in the directory. The -p flag appends a forward slash (/) to the end of names that are directories, making them *easy to identify.*
-*grep /: Filters the list to only include lines containing a / (which are the directories).* 
+*ls -p: Lists all items in the directory. The -p flag appends a forward slash (/) to the end of names that are directories, making them *easy to identify.* 
+*grep /: Filters the list to only include lines containing a / (which are the directories).*  
 
-__tee -a log__ : default, tee overwrites a file. The -a flag tells tee to append the output to the end of the file
+__tee -a log__ : default, tee overwrites a file. The -a flag tells tee to append the output to the end of the file  
 
-## week -> 4 
+## week -> 4  
 
-__grep 'Raman' names.txt__  *serch for word Raman in names.txt* 
-__cat names.txt | grep 'S.a'__ *search for S then one character then a* 
-__cat names.txt | grep '.am'__ *a character then am*
-__cat names.txt | grep 'am$'__ *that $ means am at last*
-__cat names.txt | grep '\.'__ *search for dot as \ is escape character*
-__cat names.txt | grep '^M'__ *search for capital M in starting bcoz of ^*
-__cat names.txt | grep -i '^e'__ *search for e in starting , -i for case insensitive*  
+__grep 'Raman' names.txt__  *serch for word Raman in names.txt*   
+__cat names.txt | grep 'S.a'__ *search for S then one character then a*   
+__cat names.txt | grep '.am'__ *a character then am*  
+__cat names.txt | grep 'am$'__ *that $ means am at last*  
+__cat names.txt | grep '\.'__ *search for dot as \ is escape character* 
+__cat names.txt | grep '^M'__ *search for capital M in starting bcoz of ^*  
+__cat names.txt | grep -i '^e'__ *search for e in starting , -i for case insensitive*   
 
-__sed -i 's/ *$//' names.txt__ _-i: Edits the file in place._
-_s/ *$//: Replaces any trailing spaces at the end of the line with nothing._
+__sed -i 's/ *$//' names.txt__ _-i: Edits the file in place._ 
+_s/ *$//: Replaces any trailing spaces at the end of the line with nothing._  
 
-__cat -e names.txt__ to see trailing space between end of the line and $ 
-__cat names.txt | grep 'am\b'__ am at the end of the word 
-__cat names.txt | grep 'M[ME]'__ M IN starting than either M or E  
-__cat names.txt | grep 'S.*[mn]'__ _S in starting then anything then either m or n in last, it does not matter wheather ther is space in between or not_
+__cat -e names.txt__ to see trailing space between end of the line and $  
+__cat names.txt | grep 'am\b'__ am at the end of the word   
+__cat names.txt | grep 'M[ME]'__ M IN starting than either M or E   
+__cat names.txt | grep 'S.*[mn]'__ _S in starting then anything then either m or n in last, it does not matter wheather ther is space in  between or not_ 
 
-__cat names.txt | grep '\bS.*[mn]'__ /b giving one word boundry and then same as upper (no space ) 
-__cat names.txt | grep '[aeiou][aeiou]'__ two times vowels continious 
-__cat names.txt | grep 'B90[1-5]'__ for all B901... B905
-__cat names.txt | grep 'B90[^5-7]'__ GIVING NEGATION(^) 
+__cat names.txt | grep '\bS.*[mn]'__ /b giving one word boundry and then same as upper (no space )  
+__cat names.txt | grep '[aeiou][aeiou]'__ two times vowels continious   
+__cat names.txt | grep 'B90[1-5]'__ for all B901... B905  
+__cat names.txt | grep 'B90[^5-7]'__ GIVING NEGATION(^)   
 
-__cat names.txt | grep 'M\{2\}'__ M should repeat two times 
-__cat names.txt | grep 'M\{1,2\}'__ either one or two times 
-__cat names.txt | grep  '\(ma\)'__ ma should be matching anywhere 
-__cat names.txt | grep  '\(ma\).*/1'__ should match ma then something then again ma --> _Umair Ahmad_ 
+__cat names.txt | grep 'M\{2\}'__ M should repeat two times   
+__cat names.txt | grep 'M\{1,2\}'__ either one or two times   
+__cat names.txt | grep  '\(ma\)'__ ma should be matching anywhere   
+__cat names.txt | grep  '\(ma\).*/1'__ should match ma then something then again ma --> _Umair Ahmad_   
 
-__cat names.txt | grep  '\(a.\)\{2\}__ first a then a single character, and it is two times in continus eg: Raman,Anumpama Sridhar,Vel Sankaran
+__cat names.txt | grep  '\(a.\)\{2\}__ first a then a single character, and it is two times in continus eg: Raman,Anumpama Sridhar,Vel Sankaran 
 
-__cat names.txt | grep  'M+'__ it has one m or more than one m 
-__cat names.txt | egrep  'M*a'__ word that has ma or a only ( m is optional to be there)
+__cat names.txt | grep  'M+'__ it has one m or more than one m  
+__cat names.txt | egrep  'M*a'__ word that has ma or a only ( m is optional to be there)  
 
-__cat names.txt | egrep  'ma+'__ either one ma or two ma 
-__cat names.txt | egrep  'Anu|Raman'__ either Anu or Raman 
+__cat names.txt | egrep  'ma+'__ either one ma or two ma  
+__cat names.txt | egrep  'Anu|Raman'__ either Anu or Raman    
 
-## pattern making part-2 
+## pattern making part-2  
 
-__cat chartypes.txt | grep '[[:alpha:]]'__ lines where there are albhabet 
-__cat chartypes.txt | grep '[[:cntrl:]]'__ where there is control like tab or ctrl command 
-__cat chartypes.txt | grep -v '[[:cntrl:]]'__ -v means negation here 
-see pdf for that , [[:punct:]],[[:lower:]],[[:upper:]],
-[[:print:]] printable character 
-,[[:blank:]] *only the lines in your file that contain at least one horizontal space or a tab character.*
-,[[:graph:]] match any nono space character 
+__cat chartypes.txt | grep '[[:alpha:]]'__ lines where there are albhabet   
+__cat chartypes.txt | grep '[[:cntrl:]]'__ where there is control like tab or ctrl command  
+__cat chartypes.txt | grep -v '[[:cntrl:]]'__ -v means negation here  
+see pdf for that , [[:punct:]],[[:lower:]],[[:upper:]], 
+[[:print:]] printable character   
+,[[:blank:]] *only the lines in your file that contain at least one horizontal space or a tab character.* 
+,[[:graph:]] match any nono space character   
 
-__cat chartypes.txt | grep '^$'__  give empty lines that are in file 
+__cat chartypes.txt | grep '^$'__  give empty lines that are in file  
 
-__egrep '\b[[:digit:]]{6}\b' patterns.txt__ /b is word boundry , digits that is 6 in size 
-__egrep '\b[[:alpha:]]{2}[[:digit:]]{2}[[:alpha:]][[:digit:]]{3}\b' patterns.txt__ *word boundry both side, 2 alpha 2 digit 1 alpha 3 digit 
+__egrep '\b[[:digit:]]{6}\b' patterns.txt__ /b is word boundry , digits that is 6 in size   
+__egrep '\b[[:alpha:]]{2}[[:digit:]]{2}[[:alpha:]][[:digit:]]{3}\b' patterns.txt__ *word boundry both side, 2 alpha 2 digit 1 alpha 3   digit   
 
-__cut -c 5-8 fields.txt__ cutting character 5 to 8 
-__cat fields.txt | cut -d " " -f 2__ taking delimiter as space (-d) also 2 is second thing afer space .
- __cat fields.txt | cut -d ";" -f 2__ 
+__cut -c 5-8 fields.txt__ cutting character 5 to 8  
+__cat fields.txt | cut -d " " -f 2__ taking delimiter as space (-d) also 2 is second thing afer space . 
+ __cat fields.txt | cut -d ";" -f 2__   
 
- __cat fields.txt | cut -d ";" -f 2 | cut -d "," -f 1__ *first cutting by semicolon then by comma* 
+ __cat fields.txt | cut -d ";" -f 2 | cut -d "," -f 1__ *first cutting by semicolon then by comma*  
 
-__cat fields.txt | cut -d ";" -f 2 | cut -d "," -f 1 | head -n 2 | tail -n 1__ *then starting 3 line then bottom lines from those three lines* 
+__cat fields.txt | cut -d ";" -f 2 | cut -d "," -f 1 | head -n 2 | tail -n 1__ *then starting 3 line then bottom lines from those three   lines*  
 
-## find command in week 4 last lecture 
+## find command in week 4 last lecture  
 
-__find .__ find all files and directorires 
-__find testdir1__ find directories and its files 
+__find .__ find all files and directorires    
+__find testdir1__ find directories and its files  
 
-__find . -type d__ find all directories 
-__find . -type f__ find all the files 
+__find . -type d__ find all directories   
+__find . -type f__ find all the files   
 
-__find . -type f -name "tfile1"__ finding location of this file
-__find . -type f -iname "tf*"__ * is wild card 
+__find . -type f -name "tfile1"__ finding location of this file 
+__find . -type f -iname "tf*"__ * is wild card  
 
-__find . -type f -mmin -10__ file edited in less than 10 minute , __+10__ means edited in more than 10 minute 
-__find . -type f -mmin +1 -mmin -10__ using both 
+__find . -type f -mmin -10__ file edited in less than 10 minute , __+10__ means edited in more than 10 minute   
+__find . -type f -mmin +1 -mmin -10__ using both  
 
-__find . -size +5k__ accoring to size 
-__find . -empty__ all empty files 
+__find . -size +5k__ accoring to size   
+__find . -empty__ all empty files   
 
-__find . -perm 777__ gives me all files that has permissin as 777 
+__find . -perm 777__ gives me all files that has permissin as 777   
 
-__find testdir1 -exec chown mukul_pandit:www-data {} +__ *in directory tesdir1 , all files , -exec is execution, chown is changing ownership from mukul_pandit to www-data . {} is just a place holder, + or \;
-*file ownership of group has been changed use sudo*
+__find testdir1 -exec chown mukul_pandit:www-data {} +__ *in directory tesdir1 , all files , -exec is execution, chown is changing  ownership from mukul_pandit to www-data . {} is just a place holder, + or \;  
+*file ownership of group has been changed use sudo* 
 
-__find testdir1 -perm 775__ finding directories and files that has this permission 
+__find testdir1 -perm 775__ finding directories and files that has this permission  
 
-__sudo find testdir1 -type d -exec chmod 664 {} +__ changing permission for directories *use f* for fies 
+__sudo find testdir1 -type d -exec chmod 664 {} +__ changing permission for directories *use f* for fies  
 
-__find . -type f -name "*.jpg" -maxdepth 1__ jpg files with depth as one ie in current directories 
+__find . -type f -name "*.jpg" -maxdepth 1__ jpg files with depth as one ie in current directories  
 
-__find . -type f -name "*.jpg" -maxdepth 1 -exec rm {} +__
+__find . -type f -name "*.jpg" -maxdepth 1 -exec rm {} +__  
+
+__grep -n gnu gnu_history.txt__ Prints the line numbers containing the word "gnu" from the file,  
+*-o option (only matching)* 
+*-q option (quiet/silent),* 
+*-v option (invert-match)*  
+
+__cut -c 12- CellNumbers.txt: Extracts text from the 12th character position to the end of the line,__  
+
+__[[ $var =~ ^[a-z]+\.(txt|log)$ ]]__   
+*[[ ]]* much safer and more powerful than the old [ ]   
+*=~* This operator is only available inside [[ ]]. It is the "match against regex" o  
 
