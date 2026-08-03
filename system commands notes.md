@@ -1,6 +1,7 @@
 # ***linux commands***
 ## ps gives a snapshot of current progress 
 
+__file *__ -> the file command automatically formats its output exactly like your example: [Filename]: [File Type/Description] 
 
 ## cd ->
   __to change the directory__ 
@@ -109,8 +110,8 @@
   __cp -r level1/* new_direct/__ copying inside content of level1 directory to new_direct   
 
 ## links : _make links between files_ 
-  __ln -s file1 file2 => ln -l source destination__  (soft link ) 
-  __ln file1 file2__ creating without s will give them the same i node number (hard link )    
+  __ln -s file1 file2 => ln -s source destination__  (soft link )   
+  __ln file1 file2__ creating without s will give them the same i node number (hard link )        
 
 ## file size:
 _files if they are less than a block take whole block or take {no block}, they will never take part of a block_ 
@@ -240,7 +241,7 @@ __ls /usr/bin | wc -l > file1__ (upper command and )redirect output of second co
 
 __/dev/null__ black hole to direct things (dev is very sensitive do not use anythings else)   
 
-__tee - Copy standard input to each FILE, and also to standard output__   
+__tee__ Copy standard input to each FILE, and also to standard output 
 
 __lsb_release -a__  for operating system of linux   
 
@@ -255,9 +256,9 @@ __apt-cache show fortunes__ show information about things
 __md5sum file1.txt__  
 it gives the stritg that is different for every file (471c7f53bae1ec7c12553dd2424604f2  file1.txt)  
 
-__sha1um file1.txt__  
+__sha1um file1.txt__  The long string of numbers and letters is the hex-encoded SHA-1 hash 
 
-__sha256sum file2.txt__   
+__sha256sum file2.txt__   (Secure Hash Algorithm, 256-bit). 
 
 ## software managment part 2  
 
@@ -280,11 +281,12 @@ __sudo apt-get reinstall fortune-mod__ to reinstall the package ,to refresh old 
 
 __cd /var/lib/dpkg/__ -> __less status__ to see status of packages  
 
-__mukul_pandit@DESKTOP-O2A5EAO:/var/lib/dpkg/info$ more wget.md5sums__  
+__mukul_pandit@DESKTOP-O2A5EAO:/var/lib/dpkg/info$ more wget.md5sums__  *here*
 *mukul_pandit@DESKTOP-O2A5EAO:/var/lib/dpkg/info$ md5sum /usr/bin/wget*   
 _c57c56d1d70b45a9327bbb679c8bd43  /usr/bin/wget_  
 
 to see if the file has been tempered or not   
+
 __apt search fortune__ to search commands related to it   
 ## use dpkg 
 
@@ -301,7 +303,9 @@ __dpkg -S /usr/bin/perl__ search for which installed package owns a specific fil
 
 **dpkg-query -W -f='${Section} ${binary:package}\n'** it will give me a list of all the section and within each section what are the   binary package   
 
-__dpkg-query -W -f='${Section} ${binary:package}\n' | grep shells__ it filter the line that only have the   
+__dpkg-query -W -f='${Section} ${binary:package}\n' | grep shells__ it filter the line that  has the   word shells 
+-W is for show  
+-f is for coustimizing format   
 
 ## linux operating system   
 
@@ -309,7 +313,7 @@ __dpkg-query -W -f='${Section} ${binary:package}\n' | grep shells__ it filter th
 
 __coproc sleep 10__ getting 10 second to type anything in sleep and then session gets over  
 __ps --forest__ to see the p ID of the bash shell and now   
-__kill -9 754__ that 954 is pid , that is used to kill the process  
+__kill -9 754__ that 754 is pid , that is used to kill the process  
 
 __sleep 30 &__ , _&_ to put the process in background , type _fg_ to put it in foregroung and then use ctrl + c to kill it  
 
@@ -322,25 +326,29 @@ __bash -c "echo \$$; echo \$-; ps --forest"__ first is giving the pid ,second is
 
 __history__   
 __echo{a..z}__ print all alphabet a to z  
-__echo*__ to list all the files in pwd  
+__echo *__ to list all the files in pwd  
 
 ## error code wala method   
 __echo $?__ will give zero if previous code ran without error , but give between 1 to 255 if the prev. code had some error , the number  depend on type of error  
 
 __ps -e__ list the all process that is running in the background  
 
-_he instructor is demonstrating that Linux exit codes are limited to a range of 0–255, so any value higher than that is treated as a modulo 256 operation._ 
+__(exit 257) ; echo $?__  
+_he instructor is demonstrating that Linux exit codes are limited to a range of 0–255, so any value higher than that is treated as a modulo 256 operation._  
+
 
 __comm -12__: The comm command compares two files line by line. 
 *-1 suppresses the output of lines unique to the first file.* 
 *-2 suppresses the output of lines unique to the second file.*  
 *By using -12, only the third column (lines common to both files) is displayed.*  
+__comm -12 <(sort file1.txt) <(sort file2.txt)__ sorting the file bcoz it is imp. bcoz it check lines by lines, le: it requires both files to be sorted alphabetically (lexicographically) before you run it.  
 
-**tr**: *A character-translation utility. It operates by mapping individual characters from one set to another rather than performing* *string-level replacements.* 
+**tr**:translate __echo "hello world" | tr 'a-z' 'A-Z'__ *A character-translation utility. It operates by mapping individual characters from one set to another rather than performing* *string-level replacements.* 
 
 *wc -l < twingle: Redirects the file into wc so that only the number is printed, without the filename.* 
 
 *ls -p: Lists all items in the directory. The -p flag appends a forward slash (/) to the end of names that are directories, making them *easy to identify.* 
+
 *grep /: Filters the list to only include lines containing a / (which are the directories).*  
 
 __tee -a log__ : default, tee overwrites a file. The -a flag tells tee to append the output to the end of the file  
@@ -371,11 +379,11 @@ __cat names.txt | grep 'B90[^5-7]'__ GIVING NEGATION(^)
 __cat names.txt | grep 'M\{2\}'__ M should repeat two times   
 __cat names.txt | grep 'M\{1,2\}'__ either one or two times   
 __cat names.txt | grep  '\(ma\)'__ ma should be matching anywhere   
-__cat names.txt | grep  '\(ma\).*/1'__ should match ma then something then again ma --> _Umair Ahmad_   
+__cat names.txt | grep  '\(ma\).*\1'__ should match ma then something then again ma --> _Umair Ahmad_   
 
-__cat names.txt | grep  '\(a.\)\{2\}__ first a then a single character, and it is two times in continus eg: Raman,Anumpama Sridhar,Vel Sankaran 
+__cat names.txt | grep  '\(a.\)\{2\}__ first a then a single character, and it is two times in continus eg: Raman Singh ,Anumpama Sridhar,Vel Sankaran 
 
-__cat names.txt | grep  'M+'__ it has one m or more than one m  
+__cat names.txt | egrep  'M+'__ it has one m or more than one m  
 __cat names.txt | egrep  'M*a'__ word that has ma or a only ( m is optional to be there)  
 
 __cat names.txt | egrep  'ma+'__ either one ma or two ma  
@@ -389,7 +397,7 @@ __cat chartypes.txt | grep -v '[[:cntrl:]]'__ -v means negation here
 see pdf for that , [[:punct:]],[[:lower:]],[[:upper:]], 
 [[:print:]] printable character   
 ,[[:blank:]] *only the lines in your file that contain at least one horizontal space or a tab character.* 
-,[[:graph:]] match any nono space character   
+,[[:graph:]] match any non space character   
 
 __cat chartypes.txt | grep '^$'__  give empty lines that are in file  
 
@@ -439,9 +447,40 @@ __grep -n gnu gnu_history.txt__ Prints the line numbers containing the word "gnu
 *-q option (quiet/silent),* 
 *-v option (invert-match)*  
 
-__cut -c 12- CellNumbers.txt: Extracts text from the 12th character position to the end of the line,__  
+__cut -c 12- CellNumbers.txt__ :Extracts text from the 12th character position to the end of the line,  
 
 __[[ $var =~ ^[a-z]+\.(txt|log)$ ]]__   
 *[[ ]]* much safer and more powerful than the old [ ]   
 *=~* This operator is only available inside [[ ]]. It is the "match against regex" o  
+
+*used after find command*   
+__-not -name "."__ : Prevents the command from printing the current directory itself (.), ensuring it only prints the names of the specific subdirectories that meet the criteria. 
+
+__-printf "%f\n"__ = __-exec basename -a {} +__  : This tells find to only print the filename/directory name (%f) stripped of any leading directories or paths, followed by a newline (\n). This removes the ./ entirely! 
+           (here If you want to use the high-efficiency + with basename, you must explicitly tell basename to expect multiple arguments using the -a ) 
+
+
+## commands in bpt 
+
+__cat << 'EOF' > script.sh__ Creates or overwrites a file named script.sh with multiple lines of text directly from the terminal. 
+
+__grep -oE '<span class="country-(name|capital)">[^<]+</span>'__ -o: Short for "only-matching." Instead of printing the whole line of HTML, it extracted just the matching span tags and placed each match on its own new line. 
+grep -E: Uses Extended Regular Expressions so we could use the OR logic (name|capital) 
+"Match a continuous string of one or more characters, as long as none of those characters are a < symbol." 
+
+## this is writte in a file (eg: script.sh) using any file editor 
+__#!/bin/bash__
+
+__if [ -d global_config ] || [ -d local_config ]; then__  
+    __touch default_config >/dev/null 2>&1__  
+__fi__ end of if  
+
+*Quiet mode (-q) suppresses standard output, as required by instructions*
+__if grep -q "database_error" app.log__
+
+__command &> output.txt__: This is a modern, shorthand operator supported in Bash (and several other shells) specifically designed to redirect both standard output and standard error to a file simultaneously. It behaves identically to > output.txt 2>&1 but is cleaner to write.
+
+__command & echo $!.__ 
+__&__ (Background Operator): Placing a single ampersand & immediately after a command tells the shell to execute that command asynchronously in the background.
+The & operator also acts as a command separator (similar to ;),
 
