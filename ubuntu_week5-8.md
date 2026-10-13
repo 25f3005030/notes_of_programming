@@ -17,8 +17,8 @@ __echo "$HOME"__                __echo "$PWD"__
 __echo "hostname is $HOSTNAME and username is $USER"__ interpresting inside the double quotes 
 \$HOSTNAME for escaping the meaning of $ symbol 
 
-__printenv__ = __env__ printing all shell variable tha are present 
-__set__ for all shell variable in detail with there command and some condition 
+__printenv__ = __env__ printing all shell variable that are present 
+__set__ for all shell variable in detail with there command and some condition  
 
 __printenv HOME__ printing path of home command 
 
@@ -40,7 +40,11 @@ __[[ -v myvar ]];__ if a variable has been set (defined), use __echo $?__ to che
 
 __unset myvar__ to unset the value of myvar command 
 __[[ -z ${myvar+x} ]];__ check if a variable is completely unset. ,x is commodity you can change it with anything  
- __echo $?__ to check if it has ran or not 
+-z tests for zero length (empty).
+${myvar+x} turns any existing variable into "x".
+
+
+__echo $?__ to check if it has ran or not 
 
 __echo "$myvar.txt" -> FileName.txt__ , __echo "$myvar_txt"__ -> it will think it is file name so use 
 flower bracket __echo "${myvar}_txt"__ ->  __FileName_txt__ 
@@ -59,7 +63,7 @@ __echo ${!H*}__ it will return a space-separated list of all currently defined e
 
 __echo ${#mydate}__ : "length of the value of that variable"
 __echo ${myvar:4:7}__ : "first is offset second is no. of character to be displayed from the offset 
-__echo ${myvar: -3:3}__ : negative to do from last 
+__echo ${myvar: -3:3}__ : negative to do from back 
 __date +"%d %B %Y"__ date , month , year 
 
 ## myvar=myfile.txt.jpeg 
@@ -77,7 +81,7 @@ __echo ${mydate,}__ make everything in lower case
 __echo ${mydate,,}__ make everything in upper case 
 
 __declare -i mynum__ to only store the interger, if try to store string it will give 0, 
-__declare -l myvar__ to only store lowercase, automatically converted to lowercase.
+__declare -l myvar__ to only store lowercase, automatically converted to lowercase. 
 __declare -u MYVAR__ to only store uppercase,  
             *use + to remove restriction* 
 
@@ -106,11 +110,12 @@ __echo ${hash[new_baccha]}__ to get value
 
 __find $HOME -print__ searches for and displays the path of every file and directory located inside your home directory.
 
-__find /usr -type d -name 'man*' -print__ searches the /usr directory specifically for directories whose names start with "man" and prints their full paths to the terminal.
+__find /usr -type d -name 'man*' -print__ searches the /usr directory specifically for directories whose names start with "man" and prints their full paths to the terminal. 
 
 The command __du -sh logfiles/__ calculates and displays the total disk space used by the logfiles directory in a human-readable format.
 
 The command __tar -cvf logfiles.tar logfiles/__ creates a new, uncompressed archive file (often called a tarball) containing the contents of the logfiles/ directory.
+or tar -czf means first and then gzip. 
 
 __gzip logfiles.tar__ Compresses the logfiles.tar file using the DEFLATE compression algorithm.
 replaces the original logfiles.tar file with a compressed version named logfiles.tar.gz. (By default, gzip deletes the uncompressed source file after successfully creating the compressed one)
@@ -365,5 +370,147 @@ do
     esac
 done
 echo selection completed with $i            
+---------------------------------------------
+
+week-8 
+
+#!/bin/bash                                           *script that i am going to use for scheduling* 
+BFILE=/$HOME/mukul_pandit/backup/mkbackup.log                  
+echo "starting backup automatically..." >> $BFILE
+date >> $BFILE
+echo "backup process completed" >> $BFILE
+echo "............................" >> $BFILE
+
+__crontab -e__                   --> see pdf detail of what each thing represent 
+
+__cd etc__ then __more crontab__ you will get the many directory for weekly,daily,monthly that you can change like this. 
+
+__sed -e "" sample.txt__ is doing! It reads your file line by line, but because the editing instruction is completely empty, it simply copies everything straight through to your screen without changing a single character. ✨ 
+__-e__ flag tells sed to execute a script or expression.
+
+__sed -n -e "" sample.txt__ 
+-n 🤫: The quiet (or silent) flag. Normally, sed automatically prints every line it processes. The -n flag turns off this default behavior, telling sed: "Don't print anything unless I explicitly tell you to!"
+
+__sed -e "=" sample.txt__
+ -e "=" 🏷️: The -e flag passes an instruction, and the = character is a built-in sed command that tells it: "Print the current line number right now!"
+
+__sed -n -e "5p" sample.txt__ print 5th line 
+
+__sed -n -e '5!p' sample.txt__ ! is for negation 
+
+__sed -n -e '$p' sample.txt__  
+$ is last line 
+------------------------------------------------------- 
+
+sed -n -e '=; 5,8p' sample.txt
+
+=: Tells sed to print the current line number for every line it reads.
+
+5,8p: Tells sed to print the actual text content of lines 5 through 8 (inclusive).
+------------------------------------------------------------
+
+__sed -n -e '5,8{=;p}' sample.txt __ 
+5,8{ ... } 🧱: The address range block. This is the secret sauce! It wraps the commands inside the curly braces so they execute only when sed is reading lines 5 through 8. Everything outside this range is ignored. 
+--------------------------------------------------------------
+
+sed -n -e '1~2p' sample.txt
+
+-e '1~2p' ⏭️: The step-printing command:1 is the starting line (begin at the very first line).~2 is the step interval (jump forward by 2 lines each time: $1 + 2 = 3$, $3 + 2 = 5$, etc.).p is the print command.
+
+-------------------------------------------------------------------
+
+sed -n -e '/in place of/p' sample.txt  
+
+/in place of/ 🧭: The regular expression pattern. It tells sed: "Keep your eyes peeled for this exact text string!"
+
+p 📄: The print command. It tells sed: "If you spot the pattern on this line, print it out!" 
+
+---------------------------------------------------------------------
+
+__sed -e '5,8d' sample.txt__ delete 5 to 8 line from output 
+
+__sed -e '/microsoft/d' sample.txt__ At its core, sed -e '/microsoft/d' sample.txt reads your file named sample.txt, searches for any line containing the word "microsoft", and deletes (filters out) those lines from the final output. 🗑️✨ 
+
+__sed -e 's/microsoft/MICROSOFT/g' sample.txt__ acts like a search-and-replace magic wand ✨. It reads through sample.txt, finds every single instance of the word "microsoft", and instantly transforms it into uppercase "MICROSOFT"! 🔠 
+
+__sed -E -e '3,6s/^L[[:digit:]]+//g' sample.txt__ argets only lines 3 through 6 in your sample.txt file. On those specific lines, it searches for a very specific prefix—the letter "L" followed by one or more numbers right at the very beginning of the line—and deletes it, leaving the rest of the text untouched! ✂️🎯 
+
+__sed -E -e '3,/symbolic/s/^L[[:digit:]]+ //g' sample.txt__ sets up a dynamic range search. It starts editing at line 3 and keeps applying the edit all the way up until it finds the first line containing the word "symbolic". Within that range, it looks for an "L" followed by numbers and a space at the start of the line, and deletes it! ✂️🎯 
+
+__sed -E -e '/text/,/videos/s/^L[[:digit:]]+ //g' sample.txt__ sets up a pattern-to-pattern range. Instead of using line numbers, sed scans the file until it finds a line containing "text", starts modifying lines from that point on, and keeps going until it hits a line containing "videos". Within that active zone, it snips out any leading inventory tags (like L123 ) at the start of the line! ✂️🎯
+
+__sed -e '1i ---------------------header------------' -e '$a -----footer-----' sample.txt__ takes your sample.txt file and adds a custom header right at the very beginning (before line 1) and a custom footer right at the very end (after the final line), printing out the fully framed result! 🖼️✨
+
+__sed -e '/microsoft/i --------watchout---------' -e '/in place of/a ------------------alternative----------' sample.txt__ scans through your sample.txt file and performs two smart, context-driven tricks:
+
+Whenever it sees a line containing "microsoft", it slips a warning banner right above it (i for insert). ⬆️⚠️
+
+Whenever it sees a line containing "in place of", it slips an alternative banner right below it (a for append). ⬇️✨
+
+__sed -e '/microsoft/c ------censored-----' sample.txt__ scans through your sample.txt file, hunts down any line containing the word "microsoft", and completely replaces the entire line with your custom message: ------censored-----! 🕵️‍♂️🗑️
+
+In sed, the -e flag is optional when you only provide a single script/expression (like in option B: '4,5p' or option D: '1,3d; 6,$d'). The -e flag is only strictly required when you are chaining multiple separate expressions together on the command line (like in option A, where -e is used twice for '4p' and '5p').
+
+sed '/ram/Id' input.txt: Uses the uppercase I modifier flag to make the address match case-insensitive, followed by the delete action d 🎯.
+
+sed 's/wood/WOOD/3g' -> Replaces the 3rd occurrence onwards of wood on every line.
+
+sed '2,3 s/wood/WOOD/2' -> Replaces only the 2nd occurrence of wood on lines 2 and 3.
+------------------------------------------------------------------
+The Substitution Engine (s/.../.../g):
+
+\(.*\)wood (The Pattern):
+
+.* matches any characters greedily (everything from the start of the line).
+
+\( ... \) is a capture group that saves whatever it matches. Because .* is greedy and followed by wood, it matches everything up to the very last occurrence of wood on that line! 🎯
+
+\1WOOD (The Replacement):
+
+\1 puts back everything captured in the first group (all characters up to that last wood).
+
+WOOD replaces that final matched wood.
+--------------------------------------------------------------------
+The Replacement (\U\1):
+
+\U: A GNU sed extension modifier that converts the substituted text to uppercase.
+
+\1: Inserts the captured first character. Combined with \U, it capitalizes the character.
+------------------------------------------------------------------------
+\1\1: Replaces each matched character with two copies of itself (referencing the matched group).
+---------------------------------------------------------------------------
+✨
+
+🎯 Correct Answer(s)
+A. hwinfo (Can inspect CPU/processor hardware)
+
+B. lshw (Lists hardware configuration, including processor details via -C cpu)
+
+D. cat /proc/cpuinfo (The most direct and classic command to view detailed processor/CPU info)
+------------------------------------------------------------------------------
+$ tar -xvf test.tar
+-c ➡️ Create a new archive.
+
+-x ➡️ Extract files from an archive.
+
+-v ➡️ Verbose mode (shows files being processed).
+
+-f ➡️ Specifies the archive file name.
+z ➡️ i. use gzip
+--------------------------------------------------------------------------------
+The Counter (sed -n '$='):
+
+The filtered stream of matching lines flows into the final step.
+
+The = command prints the current line number for each incoming line.
+
+The $ address specifies the very last line of the input stream.
+
+By pairing $= with the quiet flag (-n), it prints only the line number of the final item, giving us the exact total count of matching lines instantly! 🎯
+-----------------------------------------------------------------------
+
+
+
+
 
 

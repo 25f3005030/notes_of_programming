@@ -25,7 +25,7 @@ __file *__ -> the file command automatically formats its output exactly like you
   -> __touch file1__ 
   
 ## ***making copy of a file***
-  -> __cp file1 file2__
+  -> __cp file1 file2__ source destination 
   
 ## moving file to one above 
   -> __mv file2 ..__  
